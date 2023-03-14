@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name ="viewport" content="width=device-width, initial-scale=1">
+  <title>Energy Consumption Portal</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .device-button {
+      display: block;
+      margin-bottom: 30px;
+      padding: 20px;
+      border: none;
+      border-radius: 5px;
+      color: #fff;
+      background-color: #ccc;
+    }
+    
+    .device-button.on {
+      background-color: #4CAF50;
+    }
+    
+    .device-button.off {
+      background-color: #ccc;
+    }
+  </style>
+</head>
+<body>
+  <h1>Energy Consumption Portal</h1>
+  <button class="device-button" id="Fan 1" onclick="toggleFan('Fan 1')">Device 1</button>
+  <button class="device-button" id="Fan 2" onclick="toggleFan('Fan 2')">Device 2</button>
+  <button class="device-button" id="Fan 3" onclick="toggleFan('Fan 3')">Device 3</button>
+  <button class="device-button" id="Fan 4" onclick="toggleFan('Fan 4')">Device 4</button>
+  <script>
+    function toggleFan(fan) {
+      var button = document.getElementById(fan);
+      var state = button.classList.contains('on') ? 0 : 1;
+      var xhttp = new XMLHttpRequest();
+      xhttp.open("POST", "https://api.thingspeak.com/update.json", true);
+      xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+      xhttp.send("api_key=YOUR_API_KEY&field" + fan + "_state=" + state);
+      button.classList.toggle('on', state == 1);
+      button.classList.toggle('off', state == 0);
+    }
+  </script>
+</body>
+</html>
