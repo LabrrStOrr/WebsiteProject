@@ -37,6 +37,10 @@
   <button class="device-button" id="Fan 2" onclick="toggleFan('Fan 2')">Device 2</button>
   <button class="device-button" id="Fan 3" onclick="toggleFan('Fan 3')">Device 3</button>
   <button class="device-button" id="Fan 4" onclick="toggleFan('Fan 4')">Device 4</button>
+  <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2065124/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+  <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2065124/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+  <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2065124/charts/3?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+  <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2065124/charts/4?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line"></iframe>
   <script>
     function toggleFan(fan) {
       var button = document.getElementById(fan);
@@ -44,7 +48,7 @@
       var xhttp = new XMLHttpRequest();
       xhttp.open("POST", "https://api.thingspeak.com/update.json", true);
       xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      xhttp.send("api_key=YOUR_API_KEY&field" + fan + "_state=" + state);
+      xhttp.send("HBSG4YY70RMEAP84" + fan + "_state=" + state);
       button.classList.toggle('on', state == 1);
       button.classList.toggle('off', state == 0);
     }
