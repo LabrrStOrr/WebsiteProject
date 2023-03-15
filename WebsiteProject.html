@@ -48,7 +48,7 @@
       var xhttp = new XMLHttpRequest();
       xhttp.open("POST", "https://api.thingspeak.com/update.json", true);
       xhttp.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-      xhttp.send("HBSG4YY70RMEAP84" + fan + "_state=" + state);
+      xhttp.send("API_KEY_Write" + fan + "_state=" + state);
       button.classList.toggle('on', state == 1);
       button.classList.toggle('off', state == 0);
     }
